@@ -1,4 +1,4 @@
-import 'package:first_app/pages/login_page.dart';
+import 'package:first_app/auth/login_or_register.dart';
 import 'package:first_app/themes/light_mode.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: LoginOrRegister(),
       theme: lightMode,
     );
   }

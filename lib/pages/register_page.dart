@@ -2,17 +2,18 @@ import 'package:first_app/components/my_button.dart';
 import 'package:first_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmController = TextEditingController();
 
-  //tap to go to register page
+  //tap to go to login page
   final void Function()? onTap;
 
-  LoginPage({super.key, required this.onTap});
+  RegisterPage({super.key, required this.onTap});
 
-  //login method
-  void login() {}
+  //register method
+  void register() {}
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class LoginPage extends StatelessWidget {
 
             //welcome back message
             Text(
-              "Welcome back, you've been missed!",
+              "Let's create an account for you",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
@@ -60,12 +61,21 @@ class LoginPage extends StatelessWidget {
               controller: _passwordController,
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 10),
+
+            //confirm pw textfield
+            MyTextField(
+              hintText: "Confirm Password",
+              obscureText: true,
+              controller: _confirmController,
+            ),
+
+            const SizedBox(height: 50),
             //login button
 
             MyButton(
-              text: 'Login',
-              onTap: login,
+              text: 'Register',
+              onTap: register,
             ),
             //register now
 
@@ -77,14 +87,14 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Not a member? ",
+                  "Already have an account? ",
                   style:
                       TextStyle(color: Theme.of(context).colorScheme.primary),
                 ),
                 GestureDetector(
                   onTap: onTap,
                   child: Text(
-                    "Register now",
+                    "Login now",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.primary,
@@ -97,5 +107,6 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+    ;
   }
 }
