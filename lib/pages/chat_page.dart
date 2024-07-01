@@ -1,5 +1,5 @@
 import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_app/services/auth/auth_service.dart';
 import 'package:first_app/services/chat/chat_service.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +36,46 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(receiverEmail)),
+      body: Column(
+        children: [
+          //displaying all messages
+          Expanded(
+            child: _buildMessageList(),
+          )
+          //user input
+        ],
+      ),
     );
+  }
+
+  //build message list
+  Widget _buildMessageList() {
+    String senderID = _authService.getCurrentUser()!.uid;
+    return StreamBuilder(
+        stream: _chatService.getMessages(receiverID, senderID),
+        builder: (context, snapshot) {
+          //errors
+          if (snapshot.hasError) {
+            return const Text("Error");
+          }
+          //loading
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text("Loading..");
+          }
+
+          //return list view
+          return ListView(
+            children: snapshot.data!.docs
+                .map((doc) => _buildMessageItem(doc))
+                .toList(),
+          );
+        });
+  }
+
+  //build message item
+  Widget _buildMessageItem(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    return Text(data["message"]);
   }
 }
