@@ -1,4 +1,4 @@
-import 'package:first_app/auth/auth_service.dart';
+import 'package:first_app/services/auth/auth_service.dart';
 import 'package:first_app/components/my_button.dart';
 import 'package:first_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +16,7 @@ class RegisterPage extends StatelessWidget {
   //register method
   void register(BuildContext context) {
     //get auth service
+    // ignore: no_leading_underscores_for_local_identifiers
     final _auth = AuthService();
     //passwords match -> create user
     if (_passwordController.text == _confirmController.text) {

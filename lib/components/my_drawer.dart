@@ -1,4 +1,4 @@
-import 'package:first_app/auth/auth_service.dart';
+import 'package:first_app/services/auth/auth_service.dart';
 import 'package:first_app/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +7,7 @@ class MyDrawer extends StatelessWidget {
 
   void logout() {
     //get auth service
+    // ignore: no_leading_underscores_for_local_identifiers
     final _auth = AuthService();
     _auth.signOut();
   }

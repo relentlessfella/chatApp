@@ -1,4 +1,4 @@
-import 'package:first_app/auth/auth_service.dart';
+import 'package:first_app/services/auth/auth_service.dart';
 import 'package:first_app/components/my_button.dart';
 import 'package:first_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
