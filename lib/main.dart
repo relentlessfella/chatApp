@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:first_app/pages/auth_gate.dart';
-import 'package:first_app/themes/light_mode.dart';
+// import 'package:first_app/themes/light_mode.dart';
 import 'package:first_app/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
