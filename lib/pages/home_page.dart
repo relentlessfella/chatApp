@@ -32,25 +32,26 @@ class HomePage extends StatelessWidget {
 
   Widget _buildUserList() {
     return StreamBuilder(
-        stream: _chatService.getUsersStream(),
-        builder: (context, snapshot) {
-          //error
-          if (snapshot.hasError) {
-            return const Text("Error");
-          }
-          //loading...
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading...");
-          }
-          //return ListView
-          return ListView(
-            children: snapshot.data!
-                .map<Widget>(
-                  (userData) => _buildUserListItem(userData, context),
-                )
-                .toList(),
-          );
-        });
+      stream: _chatService.getUsersStream(),
+      builder: (context, snapshot) {
+        //error
+        if (snapshot.hasError) {
+          return const Text("Error");
+        }
+        //loading...
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text("Loading...");
+        }
+        //return ListView
+        return ListView(
+          children: snapshot.data!
+              .map<Widget>(
+                (userData) => _buildUserListItem(userData, context),
+              )
+              .toList(),
+        );
+      },
+    );
   }
 
   //build individual list tile for user
